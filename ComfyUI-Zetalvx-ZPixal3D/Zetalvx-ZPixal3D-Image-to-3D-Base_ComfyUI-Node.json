@@ -383,7 +383,7 @@
     },
     {
       "id": 3,
-      "title": "Image from which to create the 3D model.",
+      "title": "LOG/PATH.",
       "bounding": [
         2535.2627052833354,
         1198.2890387812724,
