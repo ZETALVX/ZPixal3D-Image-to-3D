@@ -60,21 +60,6 @@ ComfyUI: separate existing ComfyUI environment
 Pixal3D: dedicated external venv
 ```
 
-Example environment check:
-
-```bash
-<PIXAL3D_PYTHON> -c "import sys; print(sys.executable); import torch; print(torch.__version__); print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))"
-```
-
-Expected example output:
-
-```text
-/home/user/Pixal3D/venv311/bin/python
-2.5.1+cu121
-True
-NVIDIA GeForce RTX 3090
-```
-
 Notes:
 
 - Linux is strongly recommended.
