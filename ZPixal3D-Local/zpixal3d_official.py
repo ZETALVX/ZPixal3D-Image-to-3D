@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ZPixal3D local launcher.
+ZPixal3D local launcher by ZETALVX.
 
 Batch/single image wrapper for TencentARC/Pixal3D.
 
