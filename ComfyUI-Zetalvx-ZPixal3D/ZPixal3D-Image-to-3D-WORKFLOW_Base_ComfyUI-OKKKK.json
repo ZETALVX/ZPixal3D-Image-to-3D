@@ -1,0 +1,409 @@
+{
+  "id": "684af696-355c-411e-bde4-6a00ee805bea",
+  "revision": 0,
+  "last_node_id": 43,
+  "last_link_id": 83,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "LoadImage",
+      "pos": [
+        1614.0579695441836,
+        1045.894155460833
+      ],
+      "size": [
+        844.296875,
+        567.265625
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            77
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.1",
+        "Node name for S&R": "LoadImage",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        "IMG_3582.png",
+        "image"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "PreviewAny",
+      "pos": [
+        2574.514679075146,
+        1422.3023449019283
+      ],
+      "size": [
+        627.734375,
+        342.109375
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 80
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Preview Output folder",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.19.3",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 21,
+      "type": "MarkdownNote",
+      "pos": [
+        2548.983665526173,
+        1125.5549306019616
+      ],
+      "size": [
+        466.640625,
+        123.296875
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "GUIDE",
+      "properties": {
+        "ue_properties": {
+          "version": "7.7",
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "GitHub\n\n- [https://github.com/ZETALVX/ZPixal3D-Image-to-3D)\n"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 31,
+      "type": "PreviewAny",
+      "pos": [
+        3282.3755473009273,
+        1423.4287783557056
+      ],
+      "size": [
+        642.890625,
+        348.59375
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 81
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Preview Output folder",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.19.3",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 37,
+      "type": "PreviewAny",
+      "pos": [
+        2577.157973762357,
+        1830.9873596796924
+      ],
+      "size": [
+        625.546875,
+        333.4375
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 82
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Preview Output folder",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.19.3",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 38,
+      "type": "PreviewAny",
+      "pos": [
+        3276.770479503606,
+        1840.533362524161
+      ],
+      "size": [
+        651.484375,
+        322.578125
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 83
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Preview Output folder",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.19.3",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 43,
+      "type": "ZPixal3DImageTo3D",
+      "pos": [
+        1670.179129301647,
+        1756.5918861660184
+      ],
+      "size": [
+        741.71875,
+        456.015625
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 77
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "glb_path",
+          "type": "STRING",
+          "links": [
+            80
+          ]
+        },
+        {
+          "name": "comfyui_3d_path",
+          "type": "STRING",
+          "links": [
+            81
+          ]
+        },
+        {
+          "name": "output_folder",
+          "type": "STRING",
+          "links": [
+            82
+          ]
+        },
+        {
+          "name": "log_path",
+          "type": "STRING",
+          "links": [
+            83
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ZPixal3DImageTo3D"
+      },
+      "widgets_values": [
+        "zpixal3d_output",
+        "1536",
+        2086003091,
+        "randomize",
+        0,
+        "true",
+        "true",
+        "/home/zetalvx/Pixal3D/venv311/bin/python",
+        "/home/zetalvx/Pixal3D/ZPixal3D-Local",
+        "/home/zetalvx/Pixal3D/ZPixal3D-Local/Pixal3D"
+      ]
+    }
+  ],
+  "links": [
+    [
+      77,
+      8,
+      0,
+      43,
+      0,
+      "IMAGE"
+    ],
+    [
+      80,
+      43,
+      0,
+      16,
+      0,
+      "STRING"
+    ],
+    [
+      81,
+      43,
+      1,
+      31,
+      0,
+      "STRING"
+    ],
+    [
+      82,
+      43,
+      2,
+      37,
+      0,
+      "STRING"
+    ],
+    [
+      83,
+      43,
+      3,
+      38,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Image from which to create the 3D model.",
+      "bounding": [
+        1588.5002556832985,
+        962.0640733478666,
+        889.7669984076267,
+        670.0686286507525
+      ],
+      "color": "#8A8",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Zetalvx - ZPixal3D - Image-to-3d",
+      "bounding": [
+        1580.4116591254005,
+        1662.3974481231874,
+        908.706432957789,
+        566.6049539665196
+      ],
+      "color": "#8A8",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "LOG / PATH.",
+      "bounding": [
+        2539.7992197822427,
+        1302.6288722561362,
+        1456.4734526997854,
+        917.2640962636133
+      ],
+      "color": "#8A8",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7334926408372787,
+      "offset": [
+        -762.5800921875759,
+        -732.7523584539986
+      ]
+    },
+    "frontendVersion": "1.44.19"
+  },
+  "version": 0.4
+}
