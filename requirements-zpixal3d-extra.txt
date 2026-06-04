@@ -1,0 +1,6 @@
+trimesh
+opencv-python-headless
+huggingface_hub
+pillow
+numpy
+tqdm
