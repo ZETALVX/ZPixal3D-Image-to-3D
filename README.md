@@ -6,6 +6,86 @@ This setup keeps Pixal3D separate from the main ComfyUI environment, avoiding de
 
 ---
 
+## Official projects and required third-party links
+
+Main upstream projects:
+
+- TencentARC/Pixal3D  
+  https://github.com/TencentARC/Pixal3D
+
+- Microsoft TRELLIS.2  
+  https://github.com/microsoft/TRELLIS.2
+
+- TRELLIS.2 project page  
+  https://microsoft.github.io/TRELLIS.2/
+
+Useful dependency / related projects:
+
+- NATTEN  
+  https://github.com/SHI-Labs/NATTEN
+
+- NVIDIA nvdiffrast  
+  https://github.com/NVlabs/nvdiffrast  
+  https://nvlabs.github.io/nvdiffrast/
+
+- Hugging Face Hub  
+  https://huggingface.co/docs/huggingface_hub
+
+- TencentARC/Pixal3D Hugging Face model page  
+  https://huggingface.co/TencentARC/Pixal3D
+
+Additional TRELLIS.2-related native extensions used by this setup:
+
+- `CuMesh`
+- `FlexGEMM`
+- `o-voxel`
+- `nvdiffrast`
+
+Depending on the upstream state, these may be installed through TRELLIS.2 setup scripts, direct GitHub clones, or local source builds.
+
+---
+
+## Tested environment
+
+This setup was tested on:
+
+```text
+OS: Ubuntu Server / Linux
+GPU: NVIDIA GeForce RTX 3090, 24 GB VRAM
+RAM: 64 GB
+Python: 3.11.14
+Torch: 2.5.1+cu121
+CUDA reported by Torch: 12.1
+ComfyUI: separate existing ComfyUI environment
+Pixal3D: dedicated external venv
+```
+
+Example environment check:
+
+```bash
+<PIXAL3D_PYTHON> -c "import sys; print(sys.executable); import torch; print(torch.__version__); print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))"
+```
+
+Expected example output:
+
+```text
+/home/user/Pixal3D/venv311/bin/python
+2.5.1+cu121
+True
+NVIDIA GeForce RTX 3090
+```
+
+Notes:
+
+- Linux is strongly recommended.
+- NVIDIA GPU is required.
+- 24 GB VRAM is recommended for comfortable use.
+- `1024` resolution is the safest starting point.
+- `1536` resolution can use significantly more VRAM.
+- This guide was not validated on Windows or macOS.
+
+---
+
 ## What this project provides
 
 This repository adds two things around the official Pixal3D project:
@@ -75,6 +155,108 @@ Replace these paths with your own local paths.
 
 ---
 
+## Dependency files to include in this project
+
+Recommended files to include in your GitHub repository:
+
+```text
+README.md
+zpixal3d_official.py
+requirements-zpixal3d-extra.txt
+ComfyUI-Zetalvx-ZPixal3D/
+├── __init__.py
+└── zpixal3d_node.py
+```
+
+Suggested optional helper files:
+
+```text
+scripts/
+├── 01_clone_pixal3d.sh
+└── 02_check_env.sh
+```
+
+The `scripts/` folder is optional. It is useful for checking the environment or cloning the upstream Pixal3D repository, but it is not required at runtime.
+
+---
+
+## Suggested `requirements-zpixal3d-extra.txt`
+
+This project does **not** try to replace the official Pixal3D/TRELLIS.2 installation.
+
+Use the official installation instructions first, then install only missing extras.
+
+Suggested extra requirements file:
+
+```text
+trimesh
+opencv-python-headless
+huggingface_hub
+pillow
+numpy
+tqdm
+```
+
+Install with:
+
+```bash
+<PIXAL3D_PYTHON> -m pip install -r requirements-zpixal3d-extra.txt
+```
+
+Important:
+
+- Do not blindly reinstall Torch/CUDA if your environment already works.
+- Check Torch first.
+- Keep ComfyUI and Pixal3D in separate environments.
+
+Check Torch:
+
+```bash
+<PIXAL3D_PYTHON> -c "import torch; print(torch.__version__); print(torch.version.cuda); print(torch.cuda.is_available())"
+```
+
+---
+
+## Native dependencies / compiled modules
+
+Pixal3D/TRELLIS.2 may require several native or CUDA-backed components:
+
+```text
+cumesh
+flex_gemm
+o_voxel
+nvdiffrast
+natten
+```
+
+Recommended check:
+
+```bash
+<PIXAL3D_PYTHON> - <<'PY'
+mods = [
+    "torch",
+    "cv2",
+    "natten",
+    "trimesh",
+    "huggingface_hub",
+    "PIL",
+    "cumesh",
+    "flex_gemm",
+    "o_voxel",
+    "nvdiffrast",
+]
+for mod in mods:
+    try:
+        __import__(mod)
+        print(f"{mod}: OK")
+    except Exception as e:
+        print(f"{mod}: missing/problem -> {e}")
+PY
+```
+
+If one of these modules is missing, follow the upstream Pixal3D/TRELLIS.2 installation instructions or build the missing native package locally.
+
+---
 ## Important note about Pixal3D source code
 
 Do **not** patch the official Pixal3D Python source code.
@@ -337,7 +519,6 @@ Examples:
 `1536` uses more VRAM and can fail on heavier images. Start with `1024`.
 
 ---
-
 ## ComfyUI usage
 
 Install the node here:
@@ -461,26 +642,12 @@ Check the Pixal3D venv:
 <PIXAL3D_PYTHON> -c "import sys; print(sys.executable); import torch; print(torch.__version__); print(torch.cuda.is_available())"
 ```
 
-Expected:
+Expected example:
 
 ```text
 <PIXAL3D_PYTHON>
 2.5.1+cu121
 True
-```
-
-Also useful:
-
-```bash
-<PIXAL3D_PYTHON> - <<'PY'
-mods = ["torch", "cv2", "natten", "trimesh", "huggingface_hub", "PIL", "cumesh", "flex_gemm", "o_voxel", "nvdiffrast"]
-for mod in mods:
-    try:
-        __import__(mod)
-        print(f"{mod}: OK")
-    except Exception as e:
-        print(f"{mod}: missing/problem -> {e}")
-PY
 ```
 
 ---
