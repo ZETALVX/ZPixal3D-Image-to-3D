@@ -194,8 +194,6 @@ Important:
 - Check Torch first.
 - Keep ComfyUI and Pixal3D in separate environments.
 
-Check Torch:
-
 ---
 
 ## Native dependencies / compiled modules
